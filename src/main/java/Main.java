@@ -5,6 +5,6 @@ public class Main {
        // Service.WordGeneratorService newWordGen = new Service.WordGeneratorService();
 
 
-        System.out.println(WordGeneratorService.generatorWord());
+        System.out.println(WordGeneratorService.generatorWord().getWord());
     }
 }
