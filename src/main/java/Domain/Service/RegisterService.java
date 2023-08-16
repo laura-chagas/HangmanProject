@@ -24,7 +24,7 @@ public class RegisterService {
         playerClass.setSenha(password);
         playerClass.setScorePlayer(0);
         playerClass.setNamePlayer(name);
-        playerClass.setId(3);
+        playerClass.setId(4);
         playerRepository.addPlayer(playerClass);
         return playerClass;
     }
