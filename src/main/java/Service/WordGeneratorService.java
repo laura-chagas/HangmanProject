@@ -10,22 +10,24 @@ import java.net.URL;
 
 public class WordGeneratorService {
 
-    static int codigoSucesso = 200;
+    static int sucessCode = 200;
 
     public static WordClass generatorWord() throws Exception {
 
         try {
             URL url = new URL("https://random-word-api.vercel.app/api?words=1");
-            HttpURLConnection conexao = (HttpURLConnection) url.openConnection();
-            conexao.setRequestProperty("accept", "application/json");
-            if (conexao.getResponseCode() != codigoSucesso)
-                throw new RuntimeException("HTTP error code : " + conexao.getResponseCode());
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("accept", "application/json");
+            if (connection.getResponseCode() != sucessCode)
+                throw new RuntimeException("HTTP error code : " + connection.getResponseCode());
 
-            BufferedReader resposta = new BufferedReader(new InputStreamReader((conexao.getInputStream())));
+            BufferedReader resposta = new BufferedReader(new InputStreamReader((connection.getInputStream())));
             String jsonEmString = Util.converteJsonEmString(resposta);
 
             Gson gson = new Gson();
-            WordClass newWord = gson.fromJson(jsonEmString, WordClass.class);
+            String[] words = gson.fromJson(jsonEmString, String[].class);
+            WordClass newWord = new WordClass();
+            newWord.setWord(words[0]);
 
             return newWord;
         } catch (Exception e) {
