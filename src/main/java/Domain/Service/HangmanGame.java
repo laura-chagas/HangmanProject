@@ -9,57 +9,64 @@ public class HangmanGame {
 
     private PlayerClass playerOne;
     private WordClass wordGen;
-    private char[] wordTemp = {'-', '-', '-', '-', '-'};
+    private StringBuilder wordTemp = new StringBuilder("-----");
 
     public HangmanGame(PlayerClass playerOne, WordClass wordGen) {
         this.playerOne = playerOne;
         this.wordGen = wordGen;
     }
 
-    private Boolean findChar(String letter){
+    private Boolean findChar(String letter) {
 
-        if (wordGen.getWord().contains(letter)){
-            return true;
-        }else {
-            return false;
-        }
+        return wordGen.getWord().contains(letter);
     }
 
-    private void showWord(String letter){
+    private void compareLetter(String letter) {
         for (int i = 0; i < wordGen.getWord().length(); i++) {
             if (wordGen.getWord().charAt(i) == (letter.toCharArray())[0]) {
-                wordTemp[i] = (letter.toCharArray())[0];
+                wordTemp.setCharAt(i, (letter.toCharArray())[0]);
             }
         }
-
     }
-    private void scoreCount(){
+
+    private void scoreCount() {
         playerOne.setScorePlayer(playerOne.getScorePlayer() + 10);
     }
 
-    public void playGame(){
+    public void playGame() {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Sua palavra possui 5 letras, informe uma: ");
-        String letterIn = scan.next();
+        for (int i = 7; i > 0; i--) {
+            if (!(wordGen.getWord().equals(wordTemp.toString()))) {
+                System.out.println("Você tem " + (i) + " tentativas para adivinhar. ");
+                System.out.println("Adivinhe a palavra: ");
+                System.out.println(wordTemp);
+                System.out.println("Informe uma letra: ");
+                String letterIn = scan.next();
 
-       if (findChar(letterIn)){
-           scoreCount();
-           showWord(letterIn);
-       }
-        System.out.println(wordTemp);
+                if (findChar(letterIn)) {
+                    scoreCount();
+                    compareLetter(letterIn);
+                }
+                System.out.println(wordTemp);
+            }else {
+                System.out.println("Parabéns, você acertou a palavra :)) ");
+                System.out.println("Seus pontos: " + playerOne.getScorePlayer());
+                return;
+            }
+        }
+        System.out.println("Infelizmente suas chances acabaram :((( \nA palavra era: " + wordGen.getWord());
 
-        System.out.println("Seus pontos: " + playerOne.getScorePlayer());
     }
 
     public static void main(String[] args) {
-        PlayerClass eu = new PlayerClass();
-        eu.setNamePlayer("Laura");
+        PlayerClass newPlayer = new PlayerClass();
+        newPlayer.setNamePlayer("Laura");
         WordClass word = new WordClass();
         word.setWord("amora");
 
-        HangmanGame aaa = new HangmanGame(eu,word);
-        aaa.playGame();
+        HangmanGame newGame = new HangmanGame(newPlayer, word);
+        newGame.playGame();
 
     }
 }
