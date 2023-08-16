@@ -3,6 +3,7 @@ package Domain.Service;
 import Domain.Entity.PlayerClass;
 import Domain.Entity.WordClass;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HangmanGame {
@@ -16,14 +17,6 @@ public class HangmanGame {
         this.wordGen = wordGen;
     }
 
-    private Boolean findChar(String letter){
-
-        if (wordGen.getWord().contains(letter)){
-            return true;
-        }else {
-            return false;
-        }
-    }
 
     private void showWord(String letter){
         for (int i = 0; i < wordGen.getWord().length(); i++) {
