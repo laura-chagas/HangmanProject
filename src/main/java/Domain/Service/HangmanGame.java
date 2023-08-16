@@ -54,6 +54,7 @@ public class HangmanGame {
                 System.out.println("Seus pontos: " + playerOne.getScorePlayer());
                 return;
             }
+
         }
         System.out.println("Infelizmente suas chances acabaram :((( \nA palavra era: " + wordGen.getWord());
 
