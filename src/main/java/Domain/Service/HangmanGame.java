@@ -1,5 +1,6 @@
 package Domain.Service;
 
+import Domain.Abstract.PlayerRepository;
 import Domain.Entity.PlayerClass;
 import Domain.Entity.WordClass;
 
@@ -8,12 +9,17 @@ import java.util.Scanner;
 public class HangmanGame {
 
     private PlayerClass playerOne;
+    private PlayerRepository playerRepository;
     private WordClass wordGen;
     private StringBuilder wordTemp = new StringBuilder("-----");
 
-    public HangmanGame(PlayerClass playerOne, WordClass wordGen) {
-        this.playerOne = playerOne;
+    public HangmanGame(WordClass wordGen,PlayerRepository playerRepository) {
         this.wordGen = wordGen;
+        this.playerRepository = playerRepository;
+    }
+
+    public void setPlayerOne(PlayerClass playerOne) {
+        this.playerOne = playerOne;
     }
 
     private Boolean findChar(String letter) {
@@ -34,6 +40,7 @@ public class HangmanGame {
     }
 
     public void playGame() {
+        wordTemp = new StringBuilder(("-----"));
         Scanner scan = new Scanner(System.in);
 
         for (int i = 7; i > 0; i--) {
@@ -52,6 +59,8 @@ public class HangmanGame {
             }else {
                 System.out.println("Parabéns, você acertou a palavra :)) ");
                 System.out.println("Seus pontos: " + playerOne.getScorePlayer());
+                playerRepository.updateScore(playerOne);
+
                 return;
             }
         }
@@ -59,14 +68,5 @@ public class HangmanGame {
 
     }
 
-    public static void main(String[] args) {
-        PlayerClass newPlayer = new PlayerClass();
-        newPlayer.setNamePlayer("Laura");
-        WordClass word = new WordClass();
-        word.setWord("amora");
 
-        HangmanGame newGame = new HangmanGame(newPlayer, word);
-        newGame.playGame();
-
-    }
 }

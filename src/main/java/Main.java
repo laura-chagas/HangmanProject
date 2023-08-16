@@ -12,29 +12,48 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         PlayerRepository playerRepository = new PlayerRepositoryImpl();
-        RegisterService registerService = new RegisterService(playerRepository);
-        LoginService loginService = new LoginService(playerRepository);
-        PlayerClass playerClass =new  PlayerClass();
-        HangmanGame hangmanGame = new HangmanGame(playerClass,WordGeneratorService.generatorWord());
+        HangmanGame hangmanGame = new HangmanGame(WordGeneratorService.generatorWord(),playerRepository);
+        PlayerClass playerClass =menuPrincipal();
         while (true){
-            System.out.println("1-Registrar\n2-Loggin\n3-Jogar\n4-Sair");
+            System.out.println("1-Jogar\n2-Ver meus pontos\n3-Sair");
             switch (scan.next()){
                 case "1":{
-                    registerService.registerPlayer();
-                    break;
-                }
-                case "2":{
-                    loginService.loginPlayer();
-                    break;
-                }
-                case "3":{
+                    hangmanGame.setPlayerOne(playerClass);
                     hangmanGame.playGame();
                     break;
                 }
-                case "4":{
+                case "2":{
+                    System.out.println("Pontos do "+playerClass.getNamePlayer()+": "+playerClass.getScorePlayer());
+                   break;
+                }
+                case "3":{
                     System.exit(0);
                 }
             }
         }
     }
-}
+
+    public static PlayerClass menuPrincipal(){
+        Scanner scan = new Scanner(System.in);
+        PlayerRepository playerRepository = new PlayerRepositoryImpl();
+        RegisterService registerService = new RegisterService(playerRepository);
+        LoginService loginService = new LoginService(playerRepository);
+        PlayerClass playerClass =null;
+        System.out.println("1-Registrar\n2-Loggin\n3-Sair");
+        switch (scan.next()){
+            case "1":{
+                playerClass = registerService.registerPlayer();
+                break;
+            }
+            case "2":{
+                playerClass =loginService.loginPlayer();
+                break;
+            }
+            case "4":{
+                System.exit(0);
+            }
+            }
+            return playerClass;
+        }
+    }
+

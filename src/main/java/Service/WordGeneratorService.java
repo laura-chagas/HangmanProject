@@ -15,7 +15,7 @@ public class WordGeneratorService {
     public static WordClass generatorWord() throws Exception {
 
         try {
-            URL url = new URL("https://random-word-api.vercel.app/api?words=1");
+            URL url = new URL("https://random-word-api.vercel.app/api?words=1&length=5");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty("accept", "application/json");
             if (connection.getResponseCode() != sucessCode)

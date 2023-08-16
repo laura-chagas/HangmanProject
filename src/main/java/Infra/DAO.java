@@ -13,6 +13,7 @@ public class DAO
         entityManagerFactory = Persistence.createEntityManagerFactory("default");
     }
     public  void addPlayer(PlayerClass playerClass) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
 
@@ -58,14 +59,15 @@ public class DAO
     }
 
 
-    public static void incrementScore(PlayerClass playerClass) {
+    public void incrementScore(PlayerClass playerClass) {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
 
         try {
             entityTransaction.begin();
 
-            PlayerClass player = entityManager.find(PlayerClass.class,playerClass);
+            PlayerClass player = entityManager.find(PlayerClass.class,playerClass.getId());
 
 
             if (!(player == null)) {

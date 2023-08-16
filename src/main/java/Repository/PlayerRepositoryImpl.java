@@ -15,4 +15,9 @@ public class PlayerRepositoryImpl implements PlayerRepository {
     public void addPlayer(PlayerClass playerClass) {
         dao.addPlayer(playerClass);
     }
+
+    @Override
+    public void updateScore(PlayerClass playerClass) {
+        dao.incrementScore(playerClass);
+    }
 }

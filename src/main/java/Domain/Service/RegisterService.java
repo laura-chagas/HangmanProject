@@ -10,7 +10,7 @@ public class RegisterService {
     public RegisterService(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
-    public void registerPlayer(){
+    public PlayerClass registerPlayer(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Digite seu nome: ");
         String name = scan.nextLine();
@@ -24,6 +24,8 @@ public class RegisterService {
         playerClass.setSenha(password);
         playerClass.setScorePlayer(0);
         playerClass.setNamePlayer(name);
+        playerClass.setId(3);
         playerRepository.addPlayer(playerClass);
+        return playerClass;
     }
 }
