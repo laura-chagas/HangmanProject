@@ -16,7 +16,14 @@ public class HangmanGame {
         this.playerOne = playerOne;
         this.wordGen = wordGen;
     }
+    private Boolean findChar(String letter){
 
+        if (wordGen.getWord().contains(letter)){
+            return true;
+        }else {
+            return false;
+        }
+    }
 
     private void showWord(String letter){
         for (int i = 0; i < wordGen.getWord().length(); i++) {
