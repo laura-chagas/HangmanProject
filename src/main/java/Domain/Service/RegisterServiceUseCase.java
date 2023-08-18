@@ -5,9 +5,9 @@ import Domain.Entity.PlayerClass;
 
 import java.util.Scanner;
 
-public class RegisterService {
+public class RegisterServiceUseCase {
     private PlayerRepository playerRepository;
-    public RegisterService(PlayerRepository playerRepository) {
+    public RegisterServiceUseCase(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
     public PlayerClass registerPlayer(){

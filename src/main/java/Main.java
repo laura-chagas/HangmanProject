@@ -1,8 +1,8 @@
 import Domain.Abstract.PlayerRepository;
 import Domain.Entity.PlayerClass;
-import Domain.Service.HangmanGame;
-import Domain.Service.LoginService;
-import Domain.Service.RegisterService;
+import Domain.Service.HangmanGameUseCase;
+import Domain.Service.LoginServiceUseCase;
+import Domain.Service.RegisterServiceUseCase;
 import Repository.PlayerRepositoryImpl;
 import Service.WordGeneratorService;
 
@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         PlayerRepository playerRepository = new PlayerRepositoryImpl();
-        HangmanGame hangmanGame = new HangmanGame(WordGeneratorService.generatorWord(),playerRepository);
+        HangmanGameUseCase hangmanGame = new HangmanGameUseCase(WordGeneratorService.generatorWord(),playerRepository);
         PlayerClass playerClass =menuPrincipal();
         while (true){
             System.out.println("1-Jogar\n2-Ver meus pontos\n3-Sair");
@@ -36,8 +36,8 @@ public class Main {
     public static PlayerClass menuPrincipal(){
         Scanner scan = new Scanner(System.in);
         PlayerRepository playerRepository = new PlayerRepositoryImpl();
-        RegisterService registerService = new RegisterService(playerRepository);
-        LoginService loginService = new LoginService(playerRepository);
+        RegisterServiceUseCase registerService = new RegisterServiceUseCase(playerRepository);
+        LoginServiceUseCase loginService = new LoginServiceUseCase(playerRepository);
         PlayerClass playerClass =null;
         System.out.println("1-Registrar\n2-Loggin\n3-Sair");
         switch (scan.next()){

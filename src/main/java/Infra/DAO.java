@@ -7,12 +7,7 @@ import java.util.Objects;
 
 public class DAO
 {
-    private static EntityManagerFactory entityManagerFactory;
-
-    public static void initialize() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("default");
-    }
-    public  void addPlayer(PlayerClass playerClass) {
+       public  void addPlayer(PlayerClass playerClass) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();

@@ -6,14 +6,14 @@ import Domain.Entity.WordClass;
 
 import java.util.Scanner;
 
-public class HangmanGame {
+public class HangmanGameUseCase {
 
     private PlayerClass playerOne;
     private PlayerRepository playerRepository;
     private WordClass wordGen;
     private StringBuilder wordTemp = new StringBuilder("-----");
 
-    public HangmanGame(WordClass wordGen,PlayerRepository playerRepository) {
+    public HangmanGameUseCase(WordClass wordGen, PlayerRepository playerRepository) {
         this.wordGen = wordGen;
         this.playerRepository = playerRepository;
     }
