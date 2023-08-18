@@ -1,13 +1,13 @@
-package Domain.Service;
+package Domain.UseCase;
 
 import Domain.Abstract.PlayerRepository;
 import Domain.Entity.PlayerClass;
 
 import java.util.Scanner;
 
-public class LoginServiceUseCase {
+public class LoginUseCase {
     private PlayerRepository playerRepository;
-    public LoginServiceUseCase(PlayerRepository playerRepository) {
+    public LoginUseCase(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
 

@@ -1,8 +1,8 @@
 import Domain.Abstract.PlayerRepository;
 import Domain.Entity.PlayerClass;
-import Domain.Service.HangmanGameUseCase;
-import Domain.Service.LoginServiceUseCase;
-import Domain.Service.RegisterServiceUseCase;
+import Domain.UseCase.HangmanGameUseCase;
+import Domain.UseCase.LoginUseCase;
+import Domain.UseCase.RegisterUseCase;
 import Repository.PlayerRepositoryImpl;
 import Service.WordGeneratorService;
 
@@ -36,8 +36,8 @@ public class Main {
     public static PlayerClass menuPrincipal(){
         Scanner scan = new Scanner(System.in);
         PlayerRepository playerRepository = new PlayerRepositoryImpl();
-        RegisterServiceUseCase registerService = new RegisterServiceUseCase(playerRepository);
-        LoginServiceUseCase loginService = new LoginServiceUseCase(playerRepository);
+        RegisterUseCase registerService = new RegisterUseCase(playerRepository);
+        LoginUseCase loginService = new LoginUseCase(playerRepository);
         PlayerClass playerClass =null;
         System.out.println("1-Registrar\n2-Loggin\n3-Sair");
         switch (scan.next()){

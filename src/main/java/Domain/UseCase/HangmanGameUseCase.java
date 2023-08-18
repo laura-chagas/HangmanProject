@@ -1,4 +1,4 @@
-package Domain.Service;
+package Domain.UseCase;
 
 import Domain.Abstract.PlayerRepository;
 import Domain.Entity.PlayerClass;
@@ -65,7 +65,7 @@ public class HangmanGameUseCase {
             }
         }
         System.out.println("Infelizmente suas chances acabaram :((( \nA palavra era: " + wordGen.getWord());
-
+        System.out.println("Pontuação geral: " + playerOne.getScorePlayer());
     }
 
 
