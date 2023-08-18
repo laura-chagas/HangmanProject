@@ -49,7 +49,7 @@ public class Main {
                 playerClass =loginService.loginPlayer();
                 break;
             }
-            case "4":{
+            case "3":{
                 System.exit(0);
             }
             }

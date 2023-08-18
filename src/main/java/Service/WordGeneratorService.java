@@ -21,8 +21,8 @@ public class WordGeneratorService {
             if (connection.getResponseCode() != sucessCode)
                 throw new RuntimeException("HTTP error code : " + connection.getResponseCode());
 
-            BufferedReader resposta = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-            String jsonEmString = Util.converteJsonEmString(resposta);
+            BufferedReader response = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+            String jsonEmString = Util.convertJsonToString(response);
 
             Gson gson = new Gson();
             String[] words = gson.fromJson(jsonEmString, String[].class);
