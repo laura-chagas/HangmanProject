@@ -42,10 +42,11 @@ public class HangmanGameUseCase {
     public void playGame() {
         wordTemp = new StringBuilder(("-----"));
         Scanner scan = new Scanner(System.in);
-
+        System.out.println("------------------ Regras de pontuação ------------------");
+        System.out.print("Acada letra correta você ganhara 10 pontos,\ncaso haja letra repitida você recebera a mesma pontuação!\n--------------------- Boa Sorte! ---------------------");
         for (int i = 7; i > 0; i--) {
             if (!(wordGen.getWord().equals(wordTemp.toString()))) {
-                System.out.println("Você tem " + (i) + " tentativas para adivinhar. ");
+                System.out.println("\nVocê tem " + (i) + " tentativas para adivinhar. ");
                 System.out.println("Adivinhe a palavra: ");
                 System.out.println(wordTemp);
                 System.out.println("Informe uma letra: ");
@@ -65,7 +66,7 @@ public class HangmanGameUseCase {
             }
         }
         System.out.println("Infelizmente suas chances acabaram :((( \nA palavra era: " + wordGen.getWord());
-        System.out.println("Pontuação geral: " + playerOne.getScorePlayer());
+        System.out.println("Pontuação geral: " + playerOne.getScorePlayer()+"\n");
     }
 
 

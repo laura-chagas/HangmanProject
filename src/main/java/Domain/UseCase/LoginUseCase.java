@@ -10,8 +10,6 @@ public class LoginUseCase {
     public LoginUseCase(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
     }
-
-
     public PlayerClass loginPlayer(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Digite seu email:");
